@@ -6,7 +6,7 @@ import java.util.Random;
 public class InsultBehaviour implements ActionFactory {
 	private ArrayList<String> listOfSentence= new ArrayList<String>();
 	private Actor target;
-	public InsultBehaviour(Actor monster,Actor subject) {
+	public InsultBehaviour(Actor subject) {
 		this.target=subject;
 		addInsultSentence();
 	}

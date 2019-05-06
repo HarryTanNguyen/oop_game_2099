@@ -16,14 +16,14 @@ public class Application {
 	public static void main(String[] args) {
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(),new Door());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
 				".......................",
 				"....#####....######....",
 				"....#...#....#....#....",
-				"....#........#....#....",
+				"....#...+....#....#....",
 				"....#####....##.###....",
 				".......................",
 				".......................",
@@ -36,6 +36,7 @@ public class Application {
 		
 		Actor player = new Player("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
+		
 		
 		Item Key= Item.newInventoryItem("Key", 'k');
 		

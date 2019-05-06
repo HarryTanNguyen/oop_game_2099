@@ -34,17 +34,17 @@ public class OpenDoor extends Action {
 		if (hasKey==true) {
 			map.add(new Floor(), doorLocation);
 			player.removeItemFromInventory(key);
-			return actor +"opened a door and key were removed form the inventory"; 
+			return actor +" opened a door and key were removed form the inventory"; 
 		}
 		else {
-			return actor+"dont have any key so cannot open";
+			return actor+" dooesn't have any key so cannot open";
 		}
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
 		// TODO Auto-generated method stub
-		return actor+"is finding the key";
+		return actor+" open door to enter a room";
 	}
 
 	@Override

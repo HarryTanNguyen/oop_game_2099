@@ -37,7 +37,7 @@ public class OpenDoor extends Action {
 			return actor +"opened a door and key were removed form the inventory"; 
 		}
 		else {
-			return actor+"dont have any key cannot open";
+			return actor+"dont have any key so cannot open";
 		}
 	}
 

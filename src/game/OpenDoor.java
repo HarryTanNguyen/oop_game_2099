@@ -3,6 +3,7 @@ import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.Player;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.Item;
@@ -31,13 +32,20 @@ public class OpenDoor extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		// TODO Auto-generated method stub
-		if (hasKey==true) {
-			map.add(new Floor(), doorLocation);
-			player.removeItemFromInventory(key);
-			return actor +" opened a door and key were removed form the inventory"; 
+		if (actor instanceof Player) {
+			
+		
+			if (hasKey==true) {
+				map.add(new Floor(), doorLocation);
+				player.removeItemFromInventory(key);
+				return actor +" opened a door and key were removed form the inventory"; 
+			}
+			else {
+				return actor+" dooesn't have any key so cannot open";
+			}
 		}
 		else {
-			return actor+" dooesn't have any key so cannot open";
+			return actor +"is monster so cannot open door";
 		}
 	}
 

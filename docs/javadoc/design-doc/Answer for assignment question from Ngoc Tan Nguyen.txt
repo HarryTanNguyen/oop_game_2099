@@ -1,0 +1,12 @@
+Q: How does an actor follow another actor
+
+Answer:
+To make an actor follow another actor. First, we have a class called "Follow Behaviour" 
+which is already in game package. This class implements "Action Factory" class and have 
+constructor with the parameter is the target actor that it has to follow. It also has 
+function to determine whether it should follow its target every turn 
+and which direction it should go next, if so we return MoverActorAction to move actor closer to target. 
+Actor classes which have behaviour of following another actor, for example Goons, Grunts...,
+have function called "addBehaviour" and we call this function in constructor of classes to add new behavior 
+to list of "Action Factory" type. So every turn, it will get "Follow Behavior" from list of action then execute 
+its behaviour. 

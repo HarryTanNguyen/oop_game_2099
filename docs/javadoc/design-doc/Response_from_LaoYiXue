@@ -1,0 +1,13 @@
+Question: How does an actor follow another actor?
+
+Ans: In the game package, there is a class called FollowBehaviour. This FollowBehaviour class implements the 
+ActionFactory interface. When we want to make an actor follow another actor (eg. Making a grunt follow the player), 
+we use the grunt object created in the main application java file to call for ActionFactory. 
+Using ActionFactory, we call for add function to add a new action. In the parameter of the add function, 
+we throw in a newly created FollowBehaviour object. And in the parameter of the FollowBehaviour object, 
+we throw in the player as the target. As such, when the code is being run in application, we will have the 
+grunt object calling for ActionFactory, in which a new action under FollowBehaviour is added with player being
+ the target and inside this FollowBehaviour, there is a getAction function which compares the grunt’s and the
+ player’s location, and check if any of the exits movable by grunts will get it closer to the player. If so, 
+  grunt moves to that location, achieving the idea of grunt following player (via making grunt move closer to 
+  the player).

@@ -1,6 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
+import java.util.List;
 
 public class GivePlanAction extends Action {
 	
@@ -14,8 +15,25 @@ public class GivePlanAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		// TODO Auto-generated method stub
+		Item neededRocketPlan;
+		Item rocketBody = null;
+		List<Item> tempList=actor.getInventory();
+		for (int i=0;i<tempList.size();i++) {
+			if (tempList.get(i).getDisplayChar()=='&') {
+				rocketBody=tempList.get(i);
+			}
+		}
+		tempList=player.getInventory();
+		for (int i=0;i<tempList.size();i++) {
+			if (tempList.get(i).getDisplayChar()=='[') {
+				neededRocketPlan=tempList.get(i);
+				player.removeItemFromInventory(neededRocketPlan);
+				player.addItemToInventory(rocketBody);
+				
+				return actor+"gave the rocket body to "+ player;
+			}
+		}
 		
-		return null;
 	}
 
 	@Override

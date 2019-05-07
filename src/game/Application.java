@@ -40,6 +40,8 @@ public class Application {
 		
 		Item Key= new Item("Key", 'k');
 		
+		Goons goon=new Goons("Harry",player);
+		gameMap.addActor(goon, 3, 3);
 		
 		Grunt grunt = new Grunt("Mongo", player);
 		gameMap.addActor(grunt, 0, 0);

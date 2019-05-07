@@ -29,10 +29,12 @@ public class GivePlanAction extends Action {
 				neededRocketPlan=tempList.get(i);
 				player.removeItemFromInventory(neededRocketPlan);
 				player.addItemToInventory(rocketBody);
+				map.removeActor(actor);
 				
 				return actor+"gave the rocket body to "+ player;
 			}
 		}
+		return player+" doesnt have rocket plan to get rocket body";
 		
 	}
 
@@ -45,7 +47,7 @@ public class GivePlanAction extends Action {
 	@Override
 	public String hotKey() {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 }

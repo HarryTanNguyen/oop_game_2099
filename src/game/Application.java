@@ -39,6 +39,14 @@ public class Application {
 		
 		
 		Item Key= new Item("Key", 'k');
+		Item RocketPlan= Item.newFurniture("Rocket Plan", '[');
+		Item RocketBody= new Item("Rocket Body",'&');
+		
+		player.addItemToInventory(RocketPlan);
+		
+		Q q=new Q("Bad Guy",player);
+		q.addItemToInventory(RocketBody);
+		gameMap.addActor(q, 2, 3);
 		
 		Goons goon=new Goons("Harry",player);
 		gameMap.addActor(goon, 3, 3);

@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.monash.fit2099.demo.KickAction;
 import edu.monash.fit2099.engine.*;
 
 public class Q extends Actor {
@@ -15,6 +16,24 @@ public class Q extends Actor {
 
 	private void addBehaviour(ActionFactory behaviour) {
 		actionFactories.add(behaviour);
+	}
+	
+	@Override
+	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+		Actions list = super.getAllowableActions(otherActor, direction, map);
+		list.add(new GivePlanAction(this,otherActor));
+		return list;
+	}
+	
+	@Override
+	public Action playTurn(Actions actions, GameMap map, Display display) {
+		for (ActionFactory factory : actionFactories) {
+			Action action = factory.getAction(this, map);
+			if(action != null)
+				return action;
+		}
+		
+		return super.playTurn(actions,  map,  display);
 	}
 
 }

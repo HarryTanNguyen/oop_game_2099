@@ -21,7 +21,7 @@ public class GivePlanAction extends Action {
 		for (int i=0;i<tempList.size();i++) {
 			if (tempList.get(i).getDisplayChar()=='&') {
 				rocketBody=tempList.get(i);
-			}
+			}  
 		}
 		tempList=player.getInventory();
 		for (int i=0;i<tempList.size();i++) {
@@ -31,7 +31,7 @@ public class GivePlanAction extends Action {
 				player.addItemToInventory(rocketBody);
 				map.removeActor(actor);
 				
-				return actor+"gave the rocket body to "+ player;
+				return actor+" gave the rocket body to "+ player;
 			}
 		}
 		return player+" doesnt have rocket plan to get rocket body";

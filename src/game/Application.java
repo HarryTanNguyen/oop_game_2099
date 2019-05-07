@@ -39,7 +39,7 @@ public class Application {
 		
 		
 		Item Key= new Item("Key", 'k');
-		Item RocketPlan= Item.newFurniture("Rocket Plan", '[');
+		Item RocketPlan= Item.newInventoryItem("Rocket Plan",'[');
 		Item RocketBody= new Item("Rocket Body",'&');
 		
 		player.addItemToInventory(RocketPlan);

@@ -48,6 +48,9 @@ public class Application {
 		
 		Grunt grunt2 = new Grunt("Norbert", player);
 		gameMap.addActor(grunt2,  10, 10);
+		
+		Ninja ninja = new Ninja("Naruto", player);
+		gameMap.addActor(ninja, 8, 12);
 			
 		world.run();
 	}

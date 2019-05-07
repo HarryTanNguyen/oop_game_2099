@@ -5,21 +5,20 @@ import edu.monash.fit2099.engine.*;
 import java.util.ArrayList;
 import java.util.List;
 
+public class Ninja extends Actor {
 
-public class Grunt extends Actor {
-
-	// Grunts have 50 hitpoints and are always represented with a g
-	public Grunt(String name, Actor player) {
-		super(name, 'g', 5, 50);
+	// Ninja have 50 hitpoints and are always represented with a "N"
+	public Ninja(String name, Actor player) {
+		super(name, 'N', 6, 50);
 		addBehaviour(new FollowBehaviour(player));
-	}
-
+	}	
+	
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
-
+	
 	private void addBehaviour(ActionFactory behaviour) {
 		actionFactories.add(behaviour);
-	}
-
+	}	
+	
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
 		for (ActionFactory factory : actionFactories) {
@@ -29,5 +28,6 @@ public class Grunt extends Actor {
 		}
 		
 		return super.playTurn(actions,  map,  display);
-	}
+	}	
+	
 }

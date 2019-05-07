@@ -38,8 +38,7 @@ public class Application {
 		world.addPlayer(player, gameMap, 2, 2);
 		
 		
-		Item Key= Item.newInventoryItem("Key", 'k');
-		
+		Item Key= new Item("Key", 'k');
 		
 		Grunt grunt = new Grunt("Mongo", player);
 		gameMap.addActor(grunt, 0, 0);

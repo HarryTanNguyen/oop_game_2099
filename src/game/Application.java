@@ -47,9 +47,7 @@ public class Application {
 		Q q=new Q("Bad Guy",player);
 		q.addItemToInventory(RocketBody);
 		gameMap.addActor(q, 2, 3);
-		
-
-		
+				
 		Goons goon=new Goons("Harry",player);
 		gameMap.addActor(goon, 3, 3);
 		
@@ -60,10 +58,12 @@ public class Application {
 		gameMap.addActor(grunt2,  10, 10);
 		
 		Ninja ninja = new Ninja("Naruto", player);
-		gameMap.addActor(ninja, 8, 9);
+		Item StunPowder = Item.newFurniture("Stun Powder", '*');
+		ninja .addItemToInventory(StunPowder);
+		gameMap.addActor(ninja, 8, 6);
 			
 		Doctor doctorMaybe = new Doctor("DoctorMaybe", player);
-		gameMap.addActor(doctorMaybe, 3, 7);
+		gameMap.addActor(doctorMaybe, 6, 2);
 		
 		world.run();
 	}

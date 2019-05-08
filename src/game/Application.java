@@ -62,6 +62,9 @@ public class Application {
 		Ninja ninja = new Ninja("Naruto", player);
 		gameMap.addActor(ninja, 8, 9);
 			
+		Doctor doctorMaybe = new Doctor("DoctorMaybe", player);
+		gameMap.addActor(doctorMaybe, 3, 7);
+		
 		world.run();
 	}
 }

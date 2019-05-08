@@ -29,8 +29,9 @@ public class GivePlanAction extends Action {
 				neededRocketPlan=tempList.get(i);
 				player.removeItemFromInventory(neededRocketPlan);
 				player.addItemToInventory(rocketBody);
-				map.removeActor(actor);
-				return this.actor+" gave the rocket body to "+ player;
+				
+				map.removeActor(this.actor);
+				return this.actor+" gave the rocket body to "+ player +" and  phew phew" +this.actor +"disapear";
 			}
 		}
 		return player+" doesnt have rocket plan to get rocket body";

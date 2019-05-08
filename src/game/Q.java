@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.*;
 public class Q extends Actor {
 
 	public Q(String name, Actor player) {
-		super(name, 'q', 6, 0);
+		super(name, 'q', 2, 0);
 		// TODO Auto-generated constructor stub
 	}
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
@@ -21,6 +21,7 @@ public class Q extends Actor {
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions list = super.getAllowableActions(otherActor, direction, map);
+		list.clear();
 		list.add(new GivePlanAction(this,otherActor));
 		return list;
 	}

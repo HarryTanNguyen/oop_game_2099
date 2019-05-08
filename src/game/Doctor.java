@@ -10,7 +10,7 @@ public class Doctor extends Actor{
 	// Ninja have 25 hitpoints and are always represented with a "D"
 	public Doctor(String name, Actor player) {
 		super(name, 'D', 7, 25);
-		addBehaviour(new FollowBehaviour(player));
+		addBehaviour(new StayBehaviour(player));
 	}	
 	
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();

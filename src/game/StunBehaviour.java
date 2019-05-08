@@ -26,7 +26,7 @@ public class StunBehaviour implements ActionFactory{
 		// when n < 5, stun is successful 
 		if (n < 5) {
 			// successfully stun a target that is not currently stunned
-			if( checkStun(target) == -1) {
+			if( checkStun(target) == -1) { 
 				stunned_actors.add(target);
 				remaining_turns.add(2);
 			}

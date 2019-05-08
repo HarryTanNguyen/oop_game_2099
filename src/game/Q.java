@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.*;
 public class Q extends Actor {
 
 	public Q(String name, Actor player) {
-		super(name, 'q', 2, 1000);
+		super(name, 'Q', 2, 1000);
 		// TODO Auto-generated constructor stub
 	
 	

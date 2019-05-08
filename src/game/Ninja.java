@@ -10,7 +10,7 @@ public class Ninja extends Actor {
 	// Ninja have 50 hitpoints and are always represented with a "N"
 	public Ninja(String name, Actor player) {
 		super(name, 'N', 6, 50);
-		addBehaviour(new FollowBehaviour(player));
+		addBehaviour(new StunBehaviour(player));
 	}	
 	
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();

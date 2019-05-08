@@ -63,6 +63,8 @@ public class Application {
 		gameMap.addActor(ninja, 8, 6);
 			
 		Doctor doctorMaybe = new Doctor("DoctorMaybe", player);
+		Item RocketEngine= Item.newInventoryItem("Rocket Engine",'E');		
+		doctorMaybe.addItemToInventory(RocketEngine);
 		gameMap.addActor(doctorMaybe, 6, 2);
 		
 		world.run();

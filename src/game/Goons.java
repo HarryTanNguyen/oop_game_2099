@@ -8,7 +8,7 @@ public class Goons extends Actor {
 
 	public Goons(String name, Actor player) {
 		// TODO Auto-generated constructor stub
-		super(name,'G',4,100);
+		super(name,'G',4, 50 );
 		addBehaviour(new FollowBehaviour(player));
 		addBehaviour(new InsultBehaviour(player));
 	}

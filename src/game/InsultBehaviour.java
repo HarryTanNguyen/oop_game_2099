@@ -21,8 +21,8 @@ public class InsultBehaviour implements ActionFactory {
 		Random rand=new Random();
 		int n=rand.nextInt(100);
 		if (n<10) {
-			
-			return new AttackAction(actor,target);
+			int i=rand.nextInt(3);
+			return new ShoutingAction(actor,listOfSentence.get(i));
 		}
 		else {
 			return null;

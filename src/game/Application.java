@@ -49,6 +49,7 @@ public class Application {
 		gameMap.addActor(q, 2, 3);
 				
 		Goons goon=new Goons("Harry",player);
+		goon.addItemToInventory(Key);
 		gameMap.addActor(goon, 3, 3);
 		
 		Grunt grunt = new Grunt("Mongo", player);

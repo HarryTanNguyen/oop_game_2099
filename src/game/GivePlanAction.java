@@ -17,7 +17,7 @@ public class GivePlanAction extends Action {
 		// TODO Auto-generated method stub
 		Item neededRocketPlan;
 		Item rocketBody = null;
-		List<Item> tempList=actor.getInventory();
+		List<Item> tempList=this.actor.getInventory();
 		for (int i=0;i<tempList.size();i++) {
 			if (tempList.get(i).getDisplayChar()=='&') {
 				rocketBody=tempList.get(i);
@@ -29,9 +29,9 @@ public class GivePlanAction extends Action {
 				neededRocketPlan=tempList.get(i);
 				player.removeItemFromInventory(neededRocketPlan);
 				player.addItemToInventory(rocketBody);
-				map.removeActor(actor);
 				
-				return actor+" gave the rocket body to "+ player;
+				map.removeActor(this.actor);
+				return this.actor+" gave the rocket body to "+ player +" and  phew phew" +this.actor +"disapear";
 			}
 		}
 		return player+" doesnt have rocket plan to get rocket body";
@@ -41,7 +41,7 @@ public class GivePlanAction extends Action {
 	@Override
 	public String menuDescription(Actor actor) {
 		// TODO Auto-generated method stub
-		return actor +" give plans to"+this.actor+"to get the Rocket body";
+		return actor +" give plans to "+this.actor+" to get the Rocket body";
 	}
 
 	@Override

@@ -38,9 +38,9 @@ public class Application {
 		world.addPlayer(player, gameMap, 2, 2);
 		
 		
-		Item Key= new Item("Key", 'k');
+		Item Key= Item.newInventoryItem("Key", 'k');
 		Item RocketPlan= Item.newInventoryItem("Rocket Plan",'[');
-		Item RocketBody= Item.newInventoryItem("Rocket Body",'&');
+		Item RocketBody= Item.newFurniture("Rocket Body",'&');
 		
 		player.addItemToInventory(RocketPlan);
 	

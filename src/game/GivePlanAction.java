@@ -41,7 +41,7 @@ public class GivePlanAction extends Action {
 	@Override
 	public String menuDescription(Actor actor) {
 		// TODO Auto-generated method stub
-		return actor +" give plans to"+this.actor+"to get the Rocket body";
+		return actor +" give plans to "+this.actor+" to get the Rocket body";
 	}
 
 	@Override

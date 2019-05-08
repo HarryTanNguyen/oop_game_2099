@@ -40,13 +40,15 @@ public class Application {
 		
 		Item Key= new Item("Key", 'k');
 		Item RocketPlan= Item.newInventoryItem("Rocket Plan",'[');
-		Item RocketBody= new Item("Rocket Body",'&');
+		Item RocketBody= Item.newInventoryItem("Rocket Body",'&');
 		
 		player.addItemToInventory(RocketPlan);
-		
+	
 		Q q=new Q("Bad Guy",player);
 		q.addItemToInventory(RocketBody);
 		gameMap.addActor(q, 2, 3);
+		
+
 		
 		Goons goon=new Goons("Harry",player);
 		gameMap.addActor(goon, 3, 3);
@@ -58,7 +60,7 @@ public class Application {
 		gameMap.addActor(grunt2,  10, 10);
 		
 		Ninja ninja = new Ninja("Naruto", player);
-		gameMap.addActor(ninja, 8, 12);
+		gameMap.addActor(ninja, 8, 9);
 			
 		world.run();
 	}

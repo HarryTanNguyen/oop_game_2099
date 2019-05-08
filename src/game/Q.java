@@ -24,6 +24,10 @@ public class Q extends Actor {
 		list.add(new GivePlanAction(this,otherActor));
 		return list;
 	}
+	@Override
+	public IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(0, "");
+	}
 	
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {

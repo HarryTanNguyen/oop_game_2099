@@ -25,7 +25,7 @@ public class InsultBehaviour implements ActionFactory {
 			return new ShoutingAction(actor,listOfSentence.get(i));
 		}
 		else {
-			return null;
+			return new SkipTurnAction();
 		}
 	}
 

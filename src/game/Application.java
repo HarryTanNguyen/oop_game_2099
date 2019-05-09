@@ -24,7 +24,7 @@ public class Application {
 				"....#####....######....",
 				"....#...#....#....#....",
 				"....+...+....#....#....",
-				"....#####....##.###....",
+				"....#####....##+###....",
 				".......................",
 				".......................",
 				".......................",
@@ -39,10 +39,10 @@ public class Application {
 		
 		
 		Item Key= Item.newInventoryItem("Key", 'k');
-		Item RocketPlan= Item.newInventoryItem("Rocket Plan",'[');
+		Item RocketPlan= new Item ("Rocket Plan",'[');
 		Item RocketBody= Item.newFurniture("Rocket Body",'&');
 		
-		player.addItemToInventory(RocketPlan);
+		gameMap.addItem(RocketPlan, 14, 3);
 	
 		Q q=new Q("Bad Guy",player);
 		q.addItemToInventory(RocketBody);

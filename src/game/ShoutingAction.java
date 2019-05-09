@@ -12,7 +12,7 @@ public class ShoutingAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		// TODO Auto-generated method stub
-		return this.shoutingSetence;
+		return actor +" is shouting "+ this.shoutingSetence;
 	}
 
 	@Override

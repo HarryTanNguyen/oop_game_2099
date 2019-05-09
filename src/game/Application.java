@@ -16,7 +16,7 @@ public class Application {
 	public static void main(String[] args) {
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(),new Door());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(),new Door(), new RocketPad());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
@@ -24,12 +24,12 @@ public class Application {
 				"....#####....######....",
 				"....#...#....#....#....",
 				"....+...+....#....#....",
-				"....#####....##.###....",
+				"....#####....##+###....",
 				".......................",
 				".......................",
 				".......................",
 				".......................",
-				".......................",
+				".........=.............",
 				".......................");
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
@@ -39,10 +39,10 @@ public class Application {
 		
 		
 		Item Key= Item.newInventoryItem("Key", 'k');
-		Item RocketPlan= Item.newInventoryItem("Rocket Plan",'[');
+		Item RocketPlan= new Item ("Rocket Plan",'[');
 		Item RocketBody= Item.newFurniture("Rocket Body",'&');
 		
-		player.addItemToInventory(RocketPlan);
+		gameMap.addItem(RocketPlan, 14, 3);
 	
 		Q q=new Q("Bad Guy",player);
 		q.addItemToInventory(RocketBody);

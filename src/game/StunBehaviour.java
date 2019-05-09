@@ -72,7 +72,7 @@ public class StunBehaviour implements ActionFactory{
 	}	
 	
 	// check if a given target is currently stunned and the number of stun turns left if so
-	private int checkStun(Actor target) {
+	public int checkStun(Actor target) {
 		
 		int turnsRemain = -1;
 		Actor stunned_actor;

@@ -61,7 +61,7 @@ public class Application {
 		Ninja ninja = new Ninja("Naruto", player);
 		Item StunPowder = Item.newFurniture("Stun Powder", '*');
 		ninja .addItemToInventory(StunPowder);
-		gameMap.addActor(ninja, 8, 6);
+		gameMap.addActor(ninja, 1, 2);
 			
 		Doctor doctorMaybe = new Doctor("DoctorMaybe", player);
 		Item RocketEngine= Item.newInventoryItem("Rocket Engine",'E');		

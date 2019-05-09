@@ -38,10 +38,11 @@ public class StunBehaviour implements ActionFactory{
 				if( checkStun(target) == -1) { 
 					stunned_actors.add(target);
 					remaining_turns.add(2);
+					System.out.println(target + " is stunned by Naruto!");
 				}
 				// stun has no impact if target is already stunned
 				else {
-					System.out.println(target + "is already stunned.");
+					System.out.println(target + " is already stunned.");
 				}
 				
 			}

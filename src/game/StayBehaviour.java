@@ -12,6 +12,16 @@ public class StayBehaviour implements ActionFactory {
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
+		
+		Location here = map.locationOf(actor);
+		Location there = map.locationOf(target);
+
+		int currentDistance = distance(here, there);
+		
+		if (currentDistance == 1) {
+			return new AttackAction(actor, target);
+		}
+		
 		return new SkipTurnAction();
 	}
 

@@ -16,8 +16,10 @@ public class WanderBehavior implements ActionFactory {
 		int randomX=rand.nextInt(10);
 		int randomY=rand.nextInt(10);
 		Location here = map.locationOf(actor);
+		// create the random destination
 		Location there=new Location(map,randomX,randomY);
-
+		
+		//move to the random destination
 		int currentDistance = distance(here, there);
 		for (Exit exit : here.getExits()) {
 			Location destination = exit.getDestination();

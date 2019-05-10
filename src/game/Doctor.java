@@ -6,7 +6,15 @@ import java.util.List;
 import edu.monash.fit2099.engine.*;
 
 public class Doctor extends Actor{
-	
+
+/**
+ * Constructor of Doctor
+ * @param name
+ * @param player
+ * 
+ * Symbol "D" represents DoctorMaybe, with 25hp and priority 7
+ * StayBehaviour is added to Doctor
+ */
 	// Ninja have 25 hitpoints and are always represented with a "D"
 	public Doctor(String name, Actor player) {
 		super(name, 'D', 7, 25);

@@ -32,7 +32,7 @@ public class OpenDoor extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		// TODO Auto-generated method stub
-		if (actor instanceof Player) {
+		if (actor instanceof Player==true) {
 			
 		
 			if (hasKey==true) {
@@ -45,7 +45,7 @@ public class OpenDoor extends Action {
 			}
 		}
 		else {
-			return actor +"is monster so cannot open door";
+			return actor +" is monster so cannot open door";
 		}
 	}
 

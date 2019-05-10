@@ -37,7 +37,9 @@ public class Application {
 		Actor player = new GamePlayer("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
 		
-		Item Key= Item.newInventoryItem("Key", 'k');
+		Item Key1= Item.newInventoryItem("Key", 'k');
+		Item Key2 = Item.newInventoryItem("Key", 'k');
+		
 		Item RocketPlan= new Item ("Rocket Plan",'[');
 		Item RocketBody= Item.newFurniture("Rocket Body",'&');
 		
@@ -48,10 +50,11 @@ public class Application {
 		gameMap.addActor(q, 2, 3);
 				
 		Goons goon=new Goons("Harry",player);
-		goon.addItemToInventory(Key);
+		goon.addItemToInventory(Key1);
 		gameMap.addActor(goon, 3, 3);
 		
 		Grunt grunt = new Grunt("Mongo", player);
+		grunt.addItemToInventory(Key2);
 		gameMap.addActor(grunt, 0, 0);
 		
 		Grunt grunt2 = new Grunt("Norbert", player);

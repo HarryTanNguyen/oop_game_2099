@@ -18,24 +18,26 @@ public class GivePlanAction extends Action {
 		Item neededRocketPlan;
 		Item rocketBody = null;
 		List<Item> tempList=this.actor.getInventory();
-		for (int i=0;i<tempList.size();i++) {
-			if (tempList.get(i).getDisplayChar()=='&') {
-				rocketBody=tempList.get(i);
-			}  
-		}
-		tempList=player.getInventory();
-		for (int i=0;i<tempList.size();i++) {
-			if (tempList.get(i).getDisplayChar()=='[') {
-				neededRocketPlan=tempList.get(i);
-				player.removeItemFromInventory(neededRocketPlan);
-				player.addItemToInventory(rocketBody);
-				
-				map.removeActor(this.actor);
-				return this.actor+" gave the rocket body to "+ player +" and  phew phew" +this.actor +"disapear";
+		if (actor instanceof Player) {
+			for (int i=0;i<tempList.size();i++) {
+				if (tempList.get(i).getDisplayChar()=='&') {
+					rocketBody=tempList.get(i);
+				}  
 			}
+			tempList=player.getInventory();
+			for (int i=0;i<tempList.size();i++) {
+				if (tempList.get(i).getDisplayChar()=='[') {
+					neededRocketPlan=tempList.get(i);
+					player.removeItemFromInventory(neededRocketPlan);
+					player.addItemToInventory(rocketBody);
+					
+					map.removeActor(this.actor);
+					return this.actor+" gave the rocket body to "+ player +" and  phew phew" +this.actor +"disapear";
+				}
+			}
+			return player+" doesnt have rocket plan to get rocket body";
 		}
-		return player+" doesnt have rocket plan to get rocket body";
-		
+		return null;
 	}
 
 	@Override

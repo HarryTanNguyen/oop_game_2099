@@ -16,7 +16,7 @@ public class GiveFullRocketAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		// TODO Auto-generated method stub
-		if (actor instanceof Player) {
+		if (actor instanceof Player==true) {
 			List<Item> tempList= actor.getInventory();
 			for (int i=0;i<tempList.size();i++) {
 				if(tempList.get(i).getDisplayChar()=='&') {

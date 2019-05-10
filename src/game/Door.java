@@ -12,6 +12,10 @@ public class Door extends Ground{
 		super('+');
 	}
 	@Override
+	/**
+	 * Check whether door is close or open
+	 * @param player
+	 */
 	public boolean canActorEnter(Actor actor) {
 		return isOpen;
 	}

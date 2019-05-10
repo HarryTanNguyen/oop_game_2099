@@ -19,7 +19,9 @@ public class Door extends Ground{
 	public boolean canActorEnter(Actor actor) {
 		return isOpen;
 	}
-	
+	/**
+	 * return action to help player can open door
+	 */
 	@Override
 	public Actions allowableActions(Actor actor, Location location, String direction){
 		return new Actions(new OpenDoor(actor,location));

@@ -18,6 +18,7 @@ public class GivePlanAction extends Action {
 		Item neededRocketPlan;
 		Item rocketBody = null;
 		List<Item> tempList=this.actor.getInventory();
+		// check who can do this action
 		if (actor instanceof Player) {
 			for (int i=0;i<tempList.size();i++) {
 				if (tempList.get(i).getDisplayChar()=='&') {
@@ -25,12 +26,14 @@ public class GivePlanAction extends Action {
 				}  
 			}
 			tempList=player.getInventory();
+			// check whether rocket plan is inside inventory of player or not
 			for (int i=0;i<tempList.size();i++) {
+				//if so add  rocket body to inventory of player and remove rocket plan from player 
 				if (tempList.get(i).getDisplayChar()=='[') {
 					neededRocketPlan=tempList.get(i);
 					player.removeItemFromInventory(neededRocketPlan);
 					player.addItemToInventory(rocketBody);
-					
+					// remove Q from the map after it give rocket body
 					map.removeActor(this.actor);
 					return this.actor+" gave the rocket body to "+ player +" and  phew phew" +this.actor +"disapear";
 				}

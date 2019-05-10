@@ -9,7 +9,12 @@ public class StayBehaviour implements ActionFactory {
 	public StayBehaviour(Actor subject) {
 		this.target = subject;
 	}
-
+/**
+ * This function returns the skipTurnAction to allow an actor to do nothing in a turn
+ * @param the actor to carry out this behaviour
+ * @param the game map
+ * @return SkipTurnAction (or AttackAction if target is in adjacent location)
+ */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		

@@ -13,6 +13,9 @@ import edu.monash.fit2099.engine.*;
  */
 public class GamePlayer extends Player{
 	
+	private Actor subject = this;
+	private boolean stunned = false;
+	
 	/**
 	 * Constructor.
 	 *
@@ -38,6 +41,22 @@ public class GamePlayer extends Player{
 	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
+		
+		//GamePlayer subject = this;
+		StunBehaviour stun_checker = new StunBehaviour(this.subject);
+		int x = stun_checker.checkStun(this.subject);
+		System.out.println(x);
+		System.out.println(this.subject);
+		
+		if (x != -1) {
+			actions = new Actions();
+			actions.add(new SkipTurnAction());
+			
+			int index;
+			index = stun_checker.get_stunned_actor_index(subject);
+			stun_checker.change_turn(index);
+
+		}
 		return showMenu(actions, display);
 	}
 
@@ -52,12 +71,6 @@ public class GamePlayer extends Player{
 		ArrayList<Character> freeChars = new ArrayList<Character>();
 		HashMap<Character, Action> keyToActionMap = new HashMap<Character, Action>();
 		
-		StunBehaviour stun_checker = new StunBehaviour(this);
-		if (stun_checker.checkStun(this) != -1) {
-			return new SkipTurnAction();
-		}
-		
-		else {
 		for (char i = 'a'; i <= 'z'; i++)
 			freeChars.add(i);
 
@@ -91,5 +104,6 @@ public class GamePlayer extends Player{
 		
 		return keyToActionMap.get(key);
 		}
+
 	}
-}
+

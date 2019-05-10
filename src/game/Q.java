@@ -25,7 +25,7 @@ public class Q extends Actor {
 	}
 	/**
      * Returns a collection of the Actions that doesn't contain an AttackAction 
-     *
+     * add 2 new actions: action to give rocket body action and action to talk to player
      * @param otherActor the Actor that might be performing actor
 	 * @param direction  String representing the direction of the other Actor
 	 * @param map        current GameMap

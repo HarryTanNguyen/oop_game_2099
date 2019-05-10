@@ -17,6 +17,7 @@ public class OpenDoor extends Action {
 	public OpenDoor(Actor player,Location doorLocation) {
 		this.player=player;
 		this.doorLocation=doorLocation;
+		//find the key in the inventory of player
 		List<Item> tempList= player.getInventory();
 		for (int i=0;i<tempList.size();i++) {
 			if (tempList.get(i).getDisplayChar()=='k') {
@@ -30,13 +31,21 @@ public class OpenDoor extends Action {
 	}
 
 	@Override
+	/**
+	 * Returns a descriptive string
+	 * @param actor The actor performing the action.
+	 * @return the text we put on the menu
+	 */
 	public String execute(Actor actor, GameMap map) {
 		// TODO Auto-generated method stub
+		//Check only player can open the door
 		if (actor instanceof Player==true) {
 			
-		
+		//check whether player has key or not
 			if (hasKey==true) {
+				//if player has key, change door to the floor type
 				map.add(new Floor(), doorLocation);
+				//remove item from the inventory of player
 				player.removeItemFromInventory(key);
 				return actor +" opened a door and key were removed form the inventory"; 
 			}

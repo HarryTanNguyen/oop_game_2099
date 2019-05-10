@@ -45,8 +45,6 @@ public class GamePlayer extends Player{
 		//GamePlayer subject = this;
 		StunBehaviour stun_checker = new StunBehaviour(this.subject);
 		int x = stun_checker.checkStun(this.subject);
-		System.out.println(x);
-		System.out.println(this.subject);
 		
 		if (x != -1) {
 			actions = new Actions();

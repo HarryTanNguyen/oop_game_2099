@@ -23,7 +23,7 @@ public class GiveFullRocketAction extends Action {
 					neededRocketBody=tempList.get(i);
 				}
 				else if(tempList.get(i).getDisplayChar()=='E') {
-					neededRocketBody=tempList.get(i);
+					neededRocketEngine=tempList.get(i);
 				}
 			}
 			if (neededRocketEngine!=null && neededRocketBody!=null) {

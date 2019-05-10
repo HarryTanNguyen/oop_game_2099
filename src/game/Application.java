@@ -34,10 +34,10 @@ public class Application {
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
 		
-		Actor player = new GamePlayer("Player", '@', 1, 100);
+		Actor player = new Player("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
 		
-		Item Key1= Item.newInventoryItem("Key", 'k');
+		Item Key1= 	Item.newInventoryItem("Key", 'k');
 		Item Key2 = Item.newInventoryItem("Key", 'k');
 		
 		Item RocketPlan= new Item ("Rocket Plan",'[');
@@ -49,16 +49,18 @@ public class Application {
 		q.addItemToInventory(RocketBody);
 		gameMap.addActor(q, 2, 3);
 				
-		Goons goon=new Goons("Harry",player);
-		goon.addItemToInventory(Key1);
-		gameMap.addActor(goon, 3, 3);
+		Goons goon1=new Goons("Harry",player);
+		gameMap.addActor(goon1, 3, 3);
+		goon1.addItemToInventory(Key1);
+		
+		Goons goon2=new Goons("Jayden",player);
+		gameMap.addActor(goon2, 8, 8);
+		goon2.addItemToInventory(Key2);
 		
 		Grunt grunt = new Grunt("Mongo", player);
 		grunt.addItemToInventory(Key2);
 		gameMap.addActor(grunt, 0, 0);
 		
-		Grunt grunt2 = new Grunt("Norbert", player);
-		gameMap.addActor(grunt2,  10, 10);
 		
 		Ninja ninja = new Ninja("Naruto", player);
 		Item StunPowder = Item.newFurniture("Stun Powder", '*');

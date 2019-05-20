@@ -4,7 +4,8 @@ package edu.monash.fit2099.engine;
  * Class representing terrain type
  */
 public class Ground implements Skilled, Printable {
-
+	
+	
 	private Skills skills = new Skills();
 	protected char displayChar;
 

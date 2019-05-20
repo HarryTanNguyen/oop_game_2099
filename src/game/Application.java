@@ -8,15 +8,18 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.Location;
+import edu.monash.fit2099.engine.MoveActorAction;
 import edu.monash.fit2099.engine.Player;
 import edu.monash.fit2099.engine.World;
+import edu.monash.fit2099.engine.Ground;
 
 public class Application {
 
 	public static void main(String[] args) {
 		World world = new World(new Display());
-
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(),new Door(), new RocketPad());
+		
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(),new Door(),new Rock());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
@@ -29,10 +32,29 @@ public class Application {
 				".......................",
 				".......................",
 				".......................",
-				".........=.............",
+				".......................",
 				".......................");
+		
+		
+		List<String> marMap = Arrays.asList(
+				"ooooooooooooooooooooooo",
+				"ooooooo......oooooo...o",
+				"ooooo....ooooo.......oo",
+				"ooooooo..........oooooo",
+				"ooooooo.....ooo.ooooooo",
+				"ooooooooo..oooo.ooooooo",
+				"ooooooooo.oooo...oooooo",
+				"ooooo.....oooo.......oo",
+				"oo.....oooooooo.....ooo",
+				"o......ooooooooo......o",
+				"o....ooooooooo........o");
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
+		
+		GameMap mars=new GameMap(groundFactory,marMap);
+		world.addMap(mars);
+		
+
 		
 		Actor player = new GamePlayer("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
@@ -43,7 +65,15 @@ public class Application {
 		Item RocketPlan= new Item ("Rocket Plan",'[');
 		Item RocketBody= Item.newFurniture("Rocket Body",'&');
 		
+		Item RocketPad=Item.newFurniture("Rocket Pad", '=');
+		gameMap.addItem(RocketPad, 10, 9);
+		//RocketPad.addNewAction(new GiveFullRocketAction(player,gameMap.at(10,9),mars.at(8, 4)));
+		RocketPad.getAllowableActions().add(new GiveFullRocketAction(player,gameMap.at(10,9),mars.at(8, 4)));
 		gameMap.addItem(RocketPlan, 14, 3);
+		
+		Item Rocket=Item.newFurniture("Rocket", '^');
+		mars.addItem(Rocket, 8, 4);
+		Rocket.getAllowableActions().add(new MoveActorAction(gameMap.at(10, 9),"to Earth"));
 	
 		Q q=new Q("Bad Guy",player);
 		q.addItemToInventory(RocketBody);

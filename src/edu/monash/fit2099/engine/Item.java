@@ -51,6 +51,9 @@ public class Item implements Printable, Skilled {
 	public String toString() {
 		return name;
 	}
+	public void addNewAction(Action action) {
+		allowableActions.add(action);
+	}
 
 	public Actions getAllowableActions() {
 		return allowableActions;

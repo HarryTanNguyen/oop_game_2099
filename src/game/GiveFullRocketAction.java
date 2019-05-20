@@ -5,15 +5,19 @@ import java.util.List;
 import edu.monash.fit2099.engine.*;
 
 public class GiveFullRocketAction extends Action {
+	private Location targetMap;
 	private Actor player;
+	private Location location;
 	private Item neededRocketEngine=null;
 	private Item neededRocketBody=null;
 	/**
 	 * Constructor
 	 * @param subject
 	 */
-	public GiveFullRocketAction(Actor subject) {
+	public GiveFullRocketAction(Actor subject,Location location,Location target) {
 		this.player=subject;
+		this.location=location;
+		this.targetMap=target;
 	}
 	
 	
@@ -41,10 +45,11 @@ public class GiveFullRocketAction extends Action {
 			}
 			// if player has rocket body and rocket engine, give player full rocket
 			if (neededRocketEngine!=null && neededRocketBody!=null) {
-				Item Rocket=new Item("Rocket",'^');
+				Item Rocket=Item.newFurniture("Rocket",'^');
 				actor.removeItemFromInventory(neededRocketBody);
 				actor.removeItemFromInventory(neededRocketEngine);
-				actor.addItemToInventory(Rocket);
+				Rocket.getAllowableActions().add(new MoveActorAction(targetMap,"to Mar"));
+				location.addItem(Rocket);
 				return actor + " got the rocket after assembling rocket engine and rocket body";
 			}
 			else {

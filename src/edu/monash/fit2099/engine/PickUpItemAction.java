@@ -1,4 +1,5 @@
 package edu.monash.fit2099.engine;
+import game.ProducingOxygenTank;
 
 /**
  * Action to allow items to be picked up.
@@ -29,6 +30,9 @@ public class PickUpItemAction extends Action {
 		map.locationOf(actor).removeItem(item);
 		actor.addItemToInventory(item);
 		item.getAllowableActions().remove(this);
+		if(item.getDisplayChar()=='$') {
+			item.getAllowableActions().add(new ProducingOxygenTank(actor));
+		}
 		item.getAllowableActions().add(new DropItemAction(item));
 		return menuDescription(actor);
 	}

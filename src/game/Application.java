@@ -19,7 +19,7 @@ public class Application {
 	public static void main(String[] args) {
 		World world = new World(new Display());
 		
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(),new Door(),new Rock());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(),new Mud(), new Wall(),new Door(),new Rock());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
@@ -38,16 +38,16 @@ public class Application {
 		
 		List<String> marMap = Arrays.asList(
 				"ooooooooooooooooooooooo",
-				"ooooooo......oooooo...o",
-				"ooooo....ooooo.......oo",
-				"ooooooo..........oooooo",
-				"ooooooo.....ooo.ooooooo",
-				"ooooooooo..oooo.ooooooo",
-				"ooooooooo.oooo...oooooo",
-				"ooooo.....oooo.......oo",
-				"oo.....oooooooo.....ooo",
-				"o......ooooooooo......o",
-				"o....ooooooooo........o");
+				"ooooooo~~~~~~oooooo~~~o",
+				"ooooo~~~~ooooo~~~~~~~oo",
+				"ooooooo~~~~~~~~~~oooooo",
+				"ooooooo~~~~~ooo~ooooooo",
+				"ooooooooo~~oooo~ooooooo",
+				"ooooooooo~oooo~~~oooooo",
+				"ooooo~~~~~oooo~~~~~~~oo",
+				"oo~~~~~oooooooo~~~~~ooo",
+				"o~~~~~~ooooooooo~~~~~~o",
+				"o~~~~ooooooooo~~~~~~~~o");
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
 		
@@ -56,7 +56,7 @@ public class Application {
 		
 
 		
-		Actor player = new GamePlayer("Player", '@', 1, 100);
+		Actor player = new Player("Player", '@', 1, 100,gameMap);
 		world.addPlayer(player, gameMap, 2, 2);
 		
 		Item Key1= 	Item.newInventoryItem("Key", 'k');
@@ -67,6 +67,7 @@ public class Application {
 		
 		Item RocketPad=Item.newFurniture("Rocket Pad", '=');
 		gameMap.addItem(RocketPad, 10, 9);
+		player.addItemToInventory(RocketBody);
 		//RocketPad.addNewAction(new GiveFullRocketAction(player,gameMap.at(10,9),mars.at(8, 4)));
 		RocketPad.getAllowableActions().add(new GiveFullRocketAction(player,gameMap.at(10,9),mars.at(8, 4)));
 		gameMap.addItem(RocketPlan, 14, 3);
@@ -74,9 +75,21 @@ public class Application {
 		Item Rocket=Item.newFurniture("Rocket", '^');
 		mars.addItem(Rocket, 8, 4);
 		Rocket.getAllowableActions().add(new MoveActorAction(gameMap.at(10, 9),"to Earth"));
-	
+		
+		Item SpaceSuit= new Item("Space Suit",'[');
+		SpaceSuit.addSkill(PlayerSkill.SPACETRAVELLER);
+		gameMap.addItem(SpaceSuit,10,8);
+		
+		Item OxygenTank=new Item("OxygenTank",']');
+		gameMap.addItem(OxygenTank, 10, 7);
+		
+		Item OxygenDispenser=new Item("Oxygen Dispenser",'$');
+		gameMap.addItem(OxygenDispenser, 9, 7);
+		
+		
+		
 		Q q=new Q("Bad Guy",player);
-		q.addItemToInventory(RocketBody);
+		//q.addItemToInventory(RocketBody);
 		gameMap.addActor(q, 2, 3);
 				
 		Goons goon1=new Goons("Harry",player);
@@ -100,8 +113,8 @@ public class Application {
 		Doctor doctorMaybe = new Doctor("DoctorMaybe", player);
 		Item RocketEngine= Item.newInventoryItem("Rocket Engine",'E');		
 		doctorMaybe.addItemToInventory(RocketEngine);
-		gameMap.addActor(doctorMaybe, 6, 2);
-		
+		//gameMap.addActor(doctorMaybe, 6, 2);
+		player.addItemToInventory(RocketEngine);
 		world.run();
 	}
 }

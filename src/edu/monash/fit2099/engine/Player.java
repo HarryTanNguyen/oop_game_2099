@@ -3,10 +3,14 @@ package edu.monash.fit2099.engine;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import game.PlayerSkill;
+
 /**
  * Class representing the Player.
  */
 public class Player extends Actor {
+	private int OxygenSupply;
+	private GameMap earth;
 
 	/**
 	 * Constructor.
@@ -16,8 +20,10 @@ public class Player extends Actor {
 	 * @param priority How early in the turn the player can act
 	 * @param hitPoints Player's starting number of hitpoints
 	 */
-	public Player(String name, char displayChar, int priority, int hitPoints) {
+	public Player(String name, char displayChar, int priority, int hitPoints,GameMap home) {
 		super(name, displayChar, priority, hitPoints);
+		OxygenSupply=0;
+		earth=home;
 	}
 
 	/**
@@ -33,6 +39,21 @@ public class Player extends Actor {
 	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
+		System.out.println(map.locationOf(this).getGround().getDisplayChar());
+		if (map.locationOf(this).getGround().getDisplayChar()=='~')
+		{
+			for (int i=0;i<this.inventory.size();i++) {
+				if(this.inventory.get(i).hasSkill(PlayerSkill.SPACETRAVELLER)) {
+					return showMenu(actions,display);
+				}
+			}
+			
+			System.out.println("Player need a space suit to survive");
+			actions.clear();
+			actions.add(new SkipTurnAction());
+			actions.add(new MoveActorAction(earth.at(10, 9),"retunr to earth"));
+				
+		}
 		return showMenu(actions, display);
 	}
 

@@ -46,7 +46,7 @@ public class Application {
         Item stick = new WeaponItem("stick", '/', 10, "pokes");
         gameMap.addItem(stick, 8, 2);
 
-        Actor player = new Player("The Player", '@', 1, 100);
+        Actor player = new Player("The Player", '@', 1, 100,gameMap);
         world.addPlayer(player, gameMap, 3, 2);
 
         Bug bug = new Bug();

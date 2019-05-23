@@ -39,19 +39,42 @@ public class Player extends Actor {
 	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
-		System.out.println(map.locationOf(this).getGround().getDisplayChar());
+		//Check whether player has oxygen tank in inventory
+		for (int i=0;i<this.inventory.size();i++) {
+			//if player has oxygen tank in inventory, we increment oxygen supply by 10 and remove
+			//used oxygen tank from inventory of player
+			if(this.inventory.get(i).getDisplayChar()==']') {
+				OxygenSupply+=10;
+				this.removeItemFromInventory(this.inventory.get(i));
+			}
+		}
+		
+		
+		//check the current map
 		if (map.locationOf(this).getGround().getDisplayChar()=='~')
 		{
+			//if player is in mars, he need a space suit 
+			//if he doesn't have player only can stay in rocket or return back to home
 			for (int i=0;i<this.inventory.size();i++) {
 				if(this.inventory.get(i).hasSkill(PlayerSkill.SPACETRAVELLER)) {
-					return showMenu(actions,display);
+					if(OxygenSupply>0) {
+						System.out.println("Player is in the mars so it cost 1 oxygen now player has "+OxygenSupply+" oxy");
+						OxygenSupply--;
+						return showMenu(actions,display);
+					}
+					else {
+						System.out.println("Player ran out of oxygen, Player will return back to home");
+						map.moveActor(this, earth.at(10, 9));
+					}
 				}
 			}
 			
 			System.out.println("Player need a space suit to survive");
 			actions.clear();
 			actions.add(new SkipTurnAction());
-			actions.add(new MoveActorAction(earth.at(10, 9),"retunr to earth"));
+			if (map.locationOf(this).getDisplayChar()=='^') {
+				actions.add(new MoveActorAction(earth.at(10, 9),"return to earth"));
+			}
 				
 		}
 		return showMenu(actions, display);

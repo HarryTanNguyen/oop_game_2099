@@ -56,7 +56,7 @@ public class Application {
 		
 
 		
-		Actor player = new Player("Player", '@', 1, 100,gameMap);
+		Actor player = new GamePlayer("Player", '@', 1, 100,gameMap);
 		world.addPlayer(player, gameMap, 2, 2);
 		
 		Item Key1= 	Item.newInventoryItem("Key", 'k');

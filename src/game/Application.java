@@ -83,10 +83,10 @@ public class Application {
 		Item OxygenTank=new Item("OxygenTank",']');
 		gameMap.addItem(OxygenTank, 10, 7);
 		
-		Item OxygenDispenser=new Item("Oxygen Dispenser",'$');
+		Item OxygenDispenser=Item.newFurniture("Oxygen Dispenser",'$');
 		gameMap.addItem(OxygenDispenser, 9, 7);
 		
-		
+		OxygenDispenser.getAllowableActions().add(new ProducingOxygenTank(player));
 		
 		Q q=new Q("Bad Guy",player);
 		//q.addItemToInventory(RocketBody);

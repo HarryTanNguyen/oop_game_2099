@@ -30,9 +30,9 @@ public class PickUpItemAction extends Action {
 		map.locationOf(actor).removeItem(item);
 		actor.addItemToInventory(item);
 		item.getAllowableActions().remove(this);
-		if(item.getDisplayChar()=='$') {
-			item.getAllowableActions().add(new ProducingOxygenTank(actor));
-		}
+		//if(item.getDisplayChar()=='$') {
+		//	item.getAllowableActions().add(new ProducingOxygenTank(actor));
+		//}
 		item.getAllowableActions().add(new DropItemAction(item));
 		return menuDescription(actor);
 	}

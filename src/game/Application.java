@@ -48,16 +48,19 @@ public class Application {
 				"oo~~~~~oooooooo~~~~~ooo",
 				"o~~~~~~ooooooooo~~~~~~o",
 				"o~~~~ooooooooo~~~~~~~~o");
+		
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
 		
 		GameMap mars=new GameMap(groundFactory,marMap);
 		world.addMap(mars);
 		
-
 		
 		Actor player = new GamePlayer("Player", '@', 1, 100,gameMap);
 		world.addPlayer(player, gameMap, 2, 2);
+		
+		Boss boss = new Boss("YugoMaxx", player);
+		mars.addActor(boss, 20, 9);
 		
 		Item Key1= 	Item.newInventoryItem("Key", 'k');
 		Item Key2 = Item.newInventoryItem("Key", 'k');
@@ -115,6 +118,7 @@ public class Application {
 		doctorMaybe.addItemToInventory(RocketEngine);
 		//gameMap.addActor(doctorMaybe, 6, 2);
 		player.addItemToInventory(RocketEngine);
+		
 		world.run();
 	}
 }

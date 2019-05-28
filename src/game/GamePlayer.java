@@ -68,23 +68,31 @@ public class GamePlayer extends Player{
 				}
 			}
 			if (hasSpaceSuit==true) {
+				//every turn player consumes 1 oxygen
 				if(OxygenSupply>0) {
 					System.out.println("Player is in the mars so it cost 1 oxygen now player has "+OxygenSupply+" oxy");
 					OxygenSupply--;
 					return showMenu(actions,display);
 				}
 				else {
+					// if player run out of oxygen, automatically return player to the location of rocket pad
+					actions.clear();
 					System.out.println("Player ran out of oxygen, Player will return back to home");
 					map.moveActor(this, earth.at(10, 9));
 				}
 			}
 			
 			else {
-				System.out.println("Player need a space suit to survive");
+				//if player doesnt have space suit, we return player back to the earth but player need to stand in the
+				//location of the rocket
 				actions.clear();
 				actions.add(new SkipTurnAction());
-				if (map.locationOf(this).getDisplayChar()=='^') {
-					actions.add(new MoveActorAction(earth.at(10, 9),"return to earth"));
+				System.out.println(map.locationOf(this).getDisplayChar());
+				for(int i=0;i<map.locationOf(this).getItems().size();i++) {
+					if(map.locationOf(this).getItems().get(i).getDisplayChar()=='^') {
+						actions.add(new MoveActorAction(earth.at(10, 9),"return to earth"));	
+					}
+				System.out.println("Player need a space suit to survive");
 				}
 			}
 				

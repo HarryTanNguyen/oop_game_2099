@@ -15,7 +15,7 @@ public class ProducingOxygenTank extends Action {
 	}
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		if (actor instanceof Player) {
+		if (actor instanceof GamePlayer) {
 			if(canProduceOxygenTank==true) {
 				List<Item> itemList=map.locationOf(actor).getItems();
 				for (int i=0;i<itemList.size();i++) {

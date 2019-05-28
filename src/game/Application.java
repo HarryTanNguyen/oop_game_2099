@@ -49,22 +49,29 @@ public class Application {
 				"o~~~~~~ooooooooo~~~~~~o",
 				"o~~~~ooooooooo~~~~~~~~o");
 		
+		// Creating Earth map and Moon map
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
 		
 		GameMap mars=new GameMap(groundFactory,marMap);
 		world.addMap(mars);
 		
-		
+		// Creating all the actors and items involved 
+		// Player
 		Actor player = new GamePlayer("Player", '@', 1, 100,gameMap);
 		world.addPlayer(player, gameMap, 2, 2);
 		
+		// Final Boss
 		Boss boss = new Boss("YugoMaxx", player);
+		Item exoskeleton = new Item("Exoskeleton", ':');
+		boss.addItemToInventory(exoskeleton);
 		mars.addActor(boss, 20, 9);
 		
+		// Two keys
 		Item Key1= 	Item.newInventoryItem("Key", 'k');
 		Item Key2 = Item.newInventoryItem("Key", 'k');
 		
+		// Rocket parts
 		Item RocketPlan= new Item ("Rocket Plan",'[');
 		Item RocketBody= Item.newFurniture("Rocket Body",'&');
 		
@@ -79,10 +86,12 @@ public class Application {
 		mars.addItem(Rocket, 8, 4);
 		Rocket.getAllowableActions().add(new MoveActorAction(gameMap.at(10, 9),"to Earth"));
 		
+		// Spacesuit
 		Item SpaceSuit= new Item("Space Suit",'[');
 		SpaceSuit.addSkill(PlayerSkill.SPACETRAVELLER);
 		gameMap.addItem(SpaceSuit,10,8);
 		
+		// Oxygen tank
 		Item OxygenTank=new Item("OxygenTank",']');
 		gameMap.addItem(OxygenTank, 10, 7);
 		
@@ -91,10 +100,12 @@ public class Application {
 		
 		OxygenDispenser.getAllowableActions().add(new ProducingOxygenTank(player));
 		
+		// Q
 		Q q=new Q("Bad Guy",player);
 		//q.addItemToInventory(RocketBody);
 		gameMap.addActor(q, 2, 3);
-				
+			
+		// Goons
 		Goons goon1=new Goons("Harry",player);
 		gameMap.addActor(goon1, 3, 3);
 		goon1.addItemToInventory(Key1);
@@ -103,16 +114,18 @@ public class Application {
 		gameMap.addActor(goon2, 8, 8);
 		goon2.addItemToInventory(Key2);
 		
+		// Grunt
 		Grunt grunt = new Grunt("Mongo", player);
 		grunt.addItemToInventory(Key2);
 		gameMap.addActor(grunt, 0, 0);
 		
-		
+		// Ninja
 		Ninja ninja = new Ninja("Naruto", player);
 		Item StunPowder = Item.newFurniture("Stun Powder", '*');
 		ninja .addItemToInventory(StunPowder);
 		gameMap.addActor(ninja, 1, 2);
 			
+		// Doctor Maybe
 		Doctor doctorMaybe = new Doctor("DoctorMaybe", player);
 		Item RocketEngine= Item.newInventoryItem("Rocket Engine",'E');		
 		doctorMaybe.addItemToInventory(RocketEngine);

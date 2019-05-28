@@ -16,12 +16,13 @@ public class Boss extends Actor{
 	 * @param name: name of monster
 	 * @param player
 	 * Boss is represented by 'B' with 20 hit points
+	 * Boss is assigned an exoskeleton from the beginning, and it is breakable by water
 	 */
 	public Boss(String name, Actor player) {
 		// TODO Auto-generated constructor stub
 		super(name,'B',4,20);
-		addBehaviour(new FollowBehaviour(player));
-		addBehaviour(new InsultBehaviour(player));
+		addBehaviour(new BossBehavior(player));
+
 	}
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
 	/**

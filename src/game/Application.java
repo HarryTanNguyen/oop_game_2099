@@ -19,7 +19,7 @@ public class Application {
 	public static void main(String[] args) {
 		World world = new World(new Display());
 		
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(),new Mud(), new Wall(),new Door(),new Rock());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(),new Water(), new Mud(), new Wall(),new Door(),new Rock());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
@@ -29,7 +29,7 @@ public class Application {
 				"....+...+....#....#....",
 				"....#####....##+###....",
 				".......................",
-				".......................",
+				".W.....................",
 				".......................",
 				".......................",
 				".......................",
@@ -66,6 +66,11 @@ public class Application {
 		Item exoskeleton = new Item("Exoskeleton", ':');
 		boss.addItemToInventory(exoskeleton);
 		mars.addActor(boss, 20, 9);
+		
+		// Water pistol
+		Item pistol = new Item("EmptyPistol", 'p');
+		mars.addItem(pistol, 6, 7);
+		
 		
 		// Two keys
 		Item Key1= 	Item.newInventoryItem("Key", 'k');

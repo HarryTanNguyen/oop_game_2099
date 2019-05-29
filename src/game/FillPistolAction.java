@@ -45,11 +45,11 @@ public class FillPistolAction extends Action {
 					Item FilledPistol = new Item("FilledPistol", 'P');
 					player.addItemToInventory(FilledPistol);
 					
-					return actor + "filled up the pistol with water";				
+					return actor + " filled up the pistol with water";				
 				}
 				
 				else {
-					return actor + "does not have a pistol";
+					return actor + " does not have a pistol";
 				}
 			}
 			

@@ -20,7 +20,7 @@ public class Boss extends Actor{
 	 */
 	public Boss(String name, Actor player) {
 		// TODO Auto-generated constructor stub
-		super(name,'B',4,20);
+		super(name,'B',4,50);
 		addBehaviour(new BossBehavior(player));
 
 	}

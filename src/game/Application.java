@@ -64,6 +64,7 @@ public class Application {
 		// Final Boss
 		Boss boss = new Boss("YugoMaxx", player);
 		Item exoskeleton = new Item("Exoskeleton", ':');
+		exoskeleton.getAllowableActions().add(new ShootBossAction(player, boss));
 		boss.addItemToInventory(exoskeleton);
 		mars.addActor(boss, 20, 9);
 		

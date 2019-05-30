@@ -76,9 +76,14 @@ public class GamePlayer extends Player{
 				}
 				else {
 					// if player run out of oxygen, automatically return player to the location of rocket pad
-					actions.clear();
-					System.out.println("Player ran out of oxygen, Player will return back to home");
+					
 					map.moveActor(this, earth.at(10, 9));
+					System.out.println("Player ran out of oxygen, Player will return back to home in next turn");
+					actions.clear();
+					actions.add(new SkipTurnAction());
+					
+					
+		
 				}
 			}
 			
@@ -98,7 +103,7 @@ public class GamePlayer extends Player{
 				
 		}
 		else {	
-		
+			//this part for stun behaviour
 			//GamePlayer subject = this;
 			StunBehaviour stun_checker = new StunBehaviour(this.subject);
 			int x = stun_checker.checkStun(this.subject);
@@ -160,6 +165,10 @@ public class GamePlayer extends Player{
 		
 		return keyToActionMap.get(key);
 		}
+	
+	
 
-	}
+}
+
+	
 

@@ -17,7 +17,7 @@ import edu.monash.fit2099.engine.Ground;
 public class Application {
 
 	public static void main(String[] args) {
-		World world = new World(new Display());
+		WorldGame world = new WorldGame(new Display());
 		
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(),new Water(), new Mud(), new Wall(),new Door(),new Rock());
 		GameMap gameMap;
@@ -64,8 +64,10 @@ public class Application {
 		// Final Boss
 		Boss boss = new Boss("YugoMaxx", player);
 		Item exoskeleton = new Item("Exoskeleton", ':');
+		Item bodyOfYugo= Item.newInventoryItem("Body of Yugo", 'U');
 		exoskeleton.getAllowableActions().add(new ShootBossAction(player, boss));
 		boss.addItemToInventory(exoskeleton);
+		boss.addItemToInventory(bodyOfYugo);
 		mars.addActor(boss, 20, 9);
 		
 		// Water pistol

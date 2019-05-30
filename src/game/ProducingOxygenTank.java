@@ -16,8 +16,11 @@ public class ProducingOxygenTank extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		if (actor instanceof GamePlayer) {
+			
+			// Check if the oxygen dispenser is available
 			if(canProduceOxygenTank==true) {
 				List<Item> itemList=map.locationOf(actor).getItems();
+				//if player is stading in another oxy tank, oxygen dispenser cannot produce 
 				for (int i=0;i<itemList.size();i++) {
 					if (itemList.get(i).getDisplayChar()==']') {
 						hasOxygenTank=true;
@@ -32,7 +35,9 @@ public class ProducingOxygenTank extends Action {
 				}
 			}
 			else if (canProduceOxygenTank==false) {
+				// calculate turn to finish producing oxygen tank
 				timeCanProduce--;
+				//oxygen tank can be produced after 2 turn 
 				if(timeCanProduce==0) {
 					Item oxygentank =new Item("OxygenTank",']');
 					map.addItem(oxygentank,map.locationOf(actor).x(),map.locationOf(actor).y());

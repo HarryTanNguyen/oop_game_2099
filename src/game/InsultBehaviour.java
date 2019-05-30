@@ -9,7 +9,11 @@ public class InsultBehaviour implements ActionFactory {
 	public InsultBehaviour(Actor subject) {
 		this.target=subject;
 		addInsultSentence();
+	
 	}
+	/**
+	 * Add list of insult sentence
+	 */
 	private void addInsultSentence() {
 		listOfSentence.add("Nupakachi");
 		listOfSentence.add("Die Die Die");

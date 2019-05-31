@@ -85,7 +85,7 @@ public class Application {
 		
 		Item RocketPad=Item.newFurniture("Rocket Pad", '=');
 		gameMap.addItem(RocketPad, 10, 9);
-		player.addItemToInventory(RocketBody);
+		//player.addItemToInventory(RocketBody);
 		//RocketPad.addNewAction(new GiveFullRocketAction(player,gameMap.at(10,9),mars.at(8, 4)));
 		RocketPad.getAllowableActions().add(new GiveFullRocketAction(player,gameMap.at(10,9),mars.at(8, 4)));
 		gameMap.addItem(RocketPlan, 14, 3);
@@ -110,7 +110,7 @@ public class Application {
 		
 		// Q
 		Q q=new Q("Bad Guy",player);
-		//q.addItemToInventory(RocketBody);
+		q.addItemToInventory(RocketBody);
 		gameMap.addActor(q, 2, 3);
 			
 		// Goons
@@ -137,8 +137,8 @@ public class Application {
 		Doctor doctorMaybe = new Doctor("DoctorMaybe", player);
 		Item RocketEngine= Item.newInventoryItem("Rocket Engine",'E');		
 		doctorMaybe.addItemToInventory(RocketEngine);
-		//gameMap.addActor(doctorMaybe, 6, 2);
-		player.addItemToInventory(RocketEngine);
+		gameMap.addActor(doctorMaybe, 6, 2);
+		//doctorMaybe.addItemToInventory(RocketEngine);
 		
 		world.run();
 	}

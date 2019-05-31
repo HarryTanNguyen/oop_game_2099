@@ -137,8 +137,8 @@ public class Application {
 		Doctor doctorMaybe = new Doctor("DoctorMaybe", player);
 		Item RocketEngine= Item.newInventoryItem("Rocket Engine",'E');		
 		doctorMaybe.addItemToInventory(RocketEngine);
-		//gameMap.addActor(doctorMaybe, 6, 2);
-		player.addItemToInventory(RocketEngine);
+		gameMap.addActor(doctorMaybe, 6, 2);
+		//player.addItemToInventory(RocketEngine);
 		
 		world.run();
 	}
